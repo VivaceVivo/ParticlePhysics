@@ -2,8 +2,6 @@ package particlephysics
 
 class Vector2D(val x: Double, val y: Double){
 	
-	//TODO Vector soll immutable sein!
-	
 	override def toString = "(" + x + ", " + y + ")"
 	
 	def multiply(c: Double): Vector2D = {
