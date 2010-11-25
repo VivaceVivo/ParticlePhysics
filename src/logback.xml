@@ -1,69 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <configuration debug="true" scan="true" scanPeriod="10 seconds">
 
-    <appender name="TEST" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%m%n</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="STDOUT_IPC" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>### IPC: %d{dd.MM.yyyy HH:mm:ss,SSS} %-5p %c{3} %M %L  %m%n</pattern>
-        </encoder>
-    </appender>
-
-	<appender name="STDOUT_SEP" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>### SEP: %d{dd.MM.yyyy HH:mm:ss,SSS} %-5p %c{3} %M %L %m%n</pattern>
-		</encoder>
-	</appender>
 	
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>### STD: %d{dd.MM.yyyy HH:mm:ss,SSS} %-5p %c{3} %M %L  %m%n</pattern>
-		</encoder>
-	</appender>
-
-	<appender name="ERROR"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<append>true</append>
-		<file>c:/error.log</file>
-
-		<rollingPolicy
-			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>error.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
-		</rollingPolicy>
-
-		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>error</level>
-		</filter>
-
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss}, %p, [%mdc], %c, %nopex %m%n</pattern>
-		</encoder>
-	</appender>
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<encoder>
+	<pattern>### STD: %d{dd.MM.yyyy HH:mm:ss,SSS} %-5p %c{3} %M %L  %m%n</pattern>
+	</encoder>
+</appender>
 
 
-	<!--  Sollte nur in Produktion auf INFO gestellt werden. In der Entwicklung, bei eingeschaltetem 
-	      Chordiant-Logging auf DEBUG-Level, führt dies andernfalls zu sehr vielen Log-Ausgaben -->
-	<logger name="particlephysics">
-        <level value="info" />
-	</logger>
 
-    <logger name="particlephysics.ParticleBox2D">
-        <level value="info" />
-	</logger>
 
-    <logger name="particlephysics.ParticleBox">
-        <level value="info" />
-	</logger>
+<logger name="particlephysics">
+	<level value="info" />
+</logger>
 
-	<root>
-	    <level value="info"/>
-	    <appender-ref ref="TEST" />
-		<appender-ref ref="ERROR" />
-	</root>
+<logger name="particlephysics.ParticleBox2D">
+       <level value="info" />
+</logger>
+
+<logger name="particlephysics.ParticleBox">
+      <level value="info" />
+</logger>
+
+<root>
+	<level value="warn"/>
+	<appender-ref STDOUT/>
+</root>
 
 </configuration>
