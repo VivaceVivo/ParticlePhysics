@@ -6,7 +6,7 @@ import java.awt.Color;
 import org.slf4j.LoggerFactory;
 
 class ParticleBox2D(width: Double, height: Double, var particles: List[Particle], t: Double,
-      var energieDependentColor: Boolean) {
+  var energieDependentColor: Boolean) {
 
   def logger = LoggerFactory.getLogger(getClass);
 
@@ -299,11 +299,11 @@ class ParticleBox2D(width: Double, height: Double, var particles: List[Particle]
   def velocityDependentColor(){
     //Erstes stoßende Teilchen:
     val eParticle1 = this.particles(0).getEk / initialTotalEnergie
-    var col = Math.min(255 * eParticle1 * 10, 255.0)
+    var col = Math.min(255 * eParticle1 * 30, 255.0)
     logger.debug("e: " + col.toInt)
     this.particles(0).color = col match{
-        case 255 => Color.red
-        case _ => new Color(col.toInt, col.toInt, col.toInt)
+        case 255 => new Color(this.particles(0).color.getRed, 240, 240)
+        case _ => new Color(this.particles(0).color.getRed, col.toInt, col.toInt)
     }
     //Zweites stoßendes Teilchen:
     val eParticle2 = realNextCollisionEvent.collisionPartnerParticle.getEk / initialTotalEnergie
@@ -311,8 +311,8 @@ class ParticleBox2D(width: Double, height: Double, var particles: List[Particle]
     logger.debug("e: " + col.toInt)
     realNextCollisionEvent.collisionPartnerParticle.color =
             col match{
-        case 255 => Color.red
-        case _ => new Color(col.toInt, col.toInt, col.toInt)
+        case 255 =>  new Color(realNextCollisionEvent.collisionPartnerParticle.color.getRed, 240, 240)
+        case _ => new Color(realNextCollisionEvent.collisionPartnerParticle.color.getRed, col.toInt, col.toInt)
     }
   }
 
