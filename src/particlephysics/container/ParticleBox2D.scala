@@ -106,7 +106,11 @@ class ParticleBox2D(width: Double, height: Double, var particles: List[Particle]
         particles = listOrderedByCollisionTime()
 
         if(logger.isDebugEnabled){
-          particles.foreach(p => println(p.nextCollisionEvent.collisionTime))
+          println("-----------------------------------------------------------------------------------------------")
+          particles.foreach(p =>
+            println("Nächste voraussichtliche Kollision des Teilchens Nr." + p.Nr +
+                    " in " + p.nextCollisionEvent.collisionTime + " s"))
+          println("-----------------------------------------------------------------------------------------------")
         }
 
         //Dann erhält man das neue "nächste" CollisionEvent aus dem CollisionEvent des zuoberst stehenden Teilchens:
@@ -330,9 +334,7 @@ class ParticleBox2D(width: Double, height: Double, var particles: List[Particle]
 	//Infos über Teilchen in Box...
 	def particleReport(): String = {
     var str = new String("Zeit: " + time)
-		for (particle <- particles){
-			str = str + "\nNr: " + particle.Nr + "\tOrt: " + particle.position + "\tGeschw.: " + particle.velocity
-		}
+		particles.foreach(p => str += "\nNr: " + p.Nr + "\tOrt: " + p.position + "\tGeschw.: " + p.velocity)
     str
 	}
 }
