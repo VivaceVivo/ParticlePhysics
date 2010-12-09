@@ -1,2 +1,10 @@
 New README
 ----------
+
+setup:
+------
+- get SBT from: http://code.google.com/p/simple-build-tool/downloads/list
+- configure as in: http://code.google.com/p/simple-build-tool/wiki/Setup
+- from command line execute sbt.bat in project dir
+- from SBT prompt type: run
+- have a.) lot of fun!
