@@ -1,11 +1,9 @@
 package particlephysics
 
 /**
- * Created by IntelliJ IDEA.
  * User: Andreas_2
  * Date: 13.11.2010
  * Time: 23:31:57
- * To change this template use File | Settings | File Templates.
  */
 
 import container.ParticleBox2D
@@ -45,10 +43,6 @@ object ParticleBox extends SimpleGUIApplication {
         }
       }
     }
-
-    //val timerActor = new MyTimer()
-    //timerActor.start
-    //starts Simulation
 
     val timerSwing: Timer = new Timer(deltaT, new ActionListener() {
       override def actionPerformed(e: ActionEvent) {
@@ -250,21 +244,3 @@ object ParticleBox extends SimpleGUIApplication {
     new ParticleBox2D(boxWidth, boxHeigth, particleList, 0.0)
   }
 }
-
-//class MyTimer extends Actor {
-//   var running: Boolean = false
-//   def act() {
-//     while(true) {
-//         receive {
-//            //start action and permanently send feedback
-//           case (receiver:Actor) => {
-//             //logger.info("Timer called. running = {} ", running)
-//             while(running) {
-//               receiver ! 0.1
-//               Thread.sleep(100)
-//             }
-//           }
-//         }
-//      }
-//   }
-//}

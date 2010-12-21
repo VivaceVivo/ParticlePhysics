@@ -9,9 +9,7 @@ import particlephysics.particle.Particle
 import particlephysics.container.ParticleBox2D
 
 /**
- * Dragging the mouse draws a simple graph
- * 
- * @author Frank Teubler, Ingo Maier
+ *
  */
 object MainSwing extends SimpleSwingApplication {
   lazy val ui = new Panel {
@@ -22,8 +20,8 @@ object MainSwing extends SimpleSwingApplication {
     preferredSize = (dim)
     focusable = true
 
-    var ort = new Point()
-    var diameter: Int = 0
+    val ort = new Point()
+    val diameter: Int = 0
     val pBox = initBox2()
 
 //    pBox.boxReport();
